@@ -6,12 +6,13 @@ const uuid = require('uuid');
 const morgan = require('morgan');
 
 const app = express();
+require('./database');
 
 //Esto es para subir las imágenes con su nombre y extensión originales
 const storage = multer.diskStorage({
     destination: path.join(__dirname,'public/uploads'),//ruta donde se guardará la imagen
     filename: (req,file,cb)=>{
-        cb(null, uuid.v4() + path.extname(file.originalname))//La v4 de uuid genera ids al azar
+        cb(null, file.originalname)
     }
 });
 
@@ -50,7 +51,7 @@ const server = app.listen(app.get('port'),()=>{
 
 const SocketIO = require('socket.io');
 const io = SocketIO(server);
-require('./database');
+
 
 //WebSockets
 
@@ -58,12 +59,9 @@ io.on('connection', (socket) =>{
     console.log("new connection from "+socket.id)
 
     socket.on('upload',(data)=>{
-        console.log('datos');
+        console.log('datos recibidos por el servidor');
         console.log(data);
-        io.sockets.emit('show',{
-            data: data,
-            imagen: file.originalname
-        });
+        io.sockets.emit('show',data);
     });
 })
 

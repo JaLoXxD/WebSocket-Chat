@@ -11,7 +11,8 @@
         <% images.forEach(function(image){ %>
             <div id="cont-img">
                 <p>Título: <%= image.title %></p>
-                <img src=" <%= image.path %> " alt="">    
+                <p>Descripción: <%= image.description %></p>
+                <img src=" <%= image.path %> " alt="" width="10%">    
             </div>    
         <% }) %>
     </div>
@@ -21,22 +22,15 @@
         const socket = io();
         let division = document.getElementById('cont-img');
         socket.on('show',function(data){
+            console.log('datos recibidos por el usuario')
             console.log(data);
-            /* let c = 0;
-            let img;
-            for(let i =0;i<data.img.legth;i++){
-                if(data.img.charAt(i) == '\'){
-                    c = c + 1;
-                    if(c >= 2){
-                        img = img + 'data.img.charAt(i)'
-                    }
-                }
-            }  
-            console.log("img: "+img); */
+            var img = data.img.substr(12,data.img.length);
+            console.log("img: "+img); 
             division.innerHTML += `<p>Título: ${data.title}</p> 
-            <img src=" ${data.img}" alt=""> `;
+            <p>Descripción: ${data.description}</p> 
+            <img src=" /uploads/${img}" alt=""> `;
             
         });
-    </script>
+    </script> 
 </body>
 </html>

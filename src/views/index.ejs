@@ -9,10 +9,10 @@
     <h1>Subir imagen</h1>
     <form action="/upload" method="POST" enctype="multipart/form-data">
         <label for="title">Título</label>
-        <input type="text" id="title">
+        <input type="text" id="title" name="title">
         <br><br><br>
         <label for="description">Descripcion</label>
-        <input type="text" id="description">
+        <input type="text" id="description" name="description">
         <br><br><br>
         <input type="file" name="image" id="img">
         <button type="submit" id="btn">Subir</button>
@@ -32,6 +32,6 @@
             })
             console.log('titulo: '+title.value)
         });
-    </script>
+    </script> 
 </body>
 </html>
