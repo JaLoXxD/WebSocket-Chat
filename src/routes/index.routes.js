@@ -25,7 +25,7 @@ router.post('/upload', async (req,res)=>{
     await img.save();
     console.log('titulo: '+img.title);
     console.log('upload')
-    res.render('index');
+    res.render('upload');
 })
 
 module.exports = router;

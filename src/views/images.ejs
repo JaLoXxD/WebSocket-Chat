@@ -8,13 +8,14 @@
 <body>
     <h1>Imágenes</h1>
     <div>
-        <% images.forEach(function(image){ %>
-            <div id="cont-img">
+        <div id="cont-img">
+            <p>Aquí se mostrarán las imágenes de la base de datos:</p>
+            <% images.forEach(function(image){ %> 
                 <p>Título: <%= image.title %></p>
                 <p>Descripción: <%= image.description %></p>
-                <img src=" <%= image.path %> " alt="" width="10%">    
-            </div>    
-        <% }) %>
+                <img src=" <%= image.path %> " alt="" width="10%">          
+            <% }) %>
+        </div>
     </div>
     <script src="socket.io/socket.io.js"></script>
     <script>

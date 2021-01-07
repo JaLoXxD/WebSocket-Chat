@@ -17,6 +17,10 @@
         <input type="file" name="image" id="img">
         <button type="submit" id="btn">Subir</button>
     </form>
+    <br>
+    <form action="/images" method="get">
+        <button type="submit">Ver las imágenes</button>
+    </form>   
     <script src="socket.io/socket.io.js" charset="utf-8"></script>
     <script>
         const socket = io();
@@ -30,7 +34,6 @@
                 description: description.value,
                 img: img.value
             })
-            console.log('titulo: '+title.value)
         });
     </script> 
 </body>
