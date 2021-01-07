@@ -3,24 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include ("partials/head"); -%>
     <title>Subir imagen</title>
 </head>
 <body>
-    <h1>Subir imagen</h1>
-    <form action="/upload" method="POST" enctype="multipart/form-data">
-        <label for="title">Título</label>
-        <input type="text" id="title" name="title">
-        <br><br><br>
-        <label for="description">Descripcion</label>
-        <input type="text" id="description" name="description">
-        <br><br><br>
-        <input type="file" name="image" id="img">
-        <button type="submit" id="btn">Subir</button>
-    </form>
-    <br>
-    <form action="/images" method="get">
-        <button type="submit">Ver las imágenes</button>
-    </form>   
+    <h1 class="pb-5 pt-5 d-flex justify-content-center">Subir imagen</h1>
+    <div class="container border border-5 rounded-3" id="img-cont">
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="title" class="form-label">Título</label>
+                <input type="text" id="title" name="title" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Descripcion</label>
+                <input type="text" id="description" name="description" class="form-control">
+            </div>
+            <div class="mb-3">
+                <input type="file" name="image" id="img" class=".custom-file-input">
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <div class="mb-3">
+                        <button type="submit" id="btn" class="btn btn-primary">Subir</button>
+                     </div>
+                </div>
+        </form>
+                <div class="col-3">
+                    <form action="/images" method="get">
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">Ver las imágenes</button>
+                        </div>
+                    </form> 
+                </div>
+            </div>
+            
+        
+        
+    </div>
+      
     <script src="socket.io/socket.io.js" charset="utf-8"></script>
     <script>
         const socket = io();

@@ -10,7 +10,7 @@ router.get('/',(req,res)=>{
 
 router.get('/images',async (req,res)=>{
     const images = await image.find({});
-    console.log('imagenes:::');
+    console.log('imagenes:');
     console.log(images);
     res.render('images',{ images: images })
 })
