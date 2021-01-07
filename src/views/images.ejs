@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagenes con WebSocket</title>
+</head>
+<body>
+    <h1>Imágenes</h1>
+    <div>
+        <% images.forEach(function(image){ %>
+            <div id="cont-img">
+                <p>Título: <%= image.title %></p>
+                <img src=" <%= image.path %> " alt="">    
+            </div>    
+        <% }) %>
+    </div>
+    <script src="socket.io/socket.io.js"></script>
+    <script>
+        console.log('socket');
+        const socket = io();
+        let division = document.getElementById('cont-img');
+        socket.on('show',function(data){
+            console.log(data);
+            /* let c = 0;
+            let img;
+            for(let i =0;i<data.img.legth;i++){
+                if(data.img.charAt(i) == '\'){
+                    c = c + 1;
+                    if(c >= 2){
+                        img = img + 'data.img.charAt(i)'
+                    }
+                }
+            }  
+            console.log("img: "+img); */
+            division.innerHTML += `<p>Título: ${data.title}</p> 
+            <img src=" ${data.img}" alt=""> `;
+            
+        });
+    </script>
+</body>
+</html>
